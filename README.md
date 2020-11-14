@@ -10,7 +10,7 @@
 ### Exploratory Notebooks
 - [Sindhu's EDA](https://github.com/SinShady/Movie-Recommender/tree/main/notebooks/exploratory/Sindhu-eda.ipynb)
 - [Jeff's EDA](https://github.com/SinShady/Movie-Recommender/blob/main/notebooks/exploratory/Jeff_EDA_small.ipynb)
-- [Will's EDA](https://github.com/SinShady/Movie-Recommender/blob/main/notebooks/exploratory/)
+- [Will's EDA](https://github.com/SinShady/Movie-Recommender/blob/main/notebooks/exploratory/Will_indexs/wills_eda_small.ipynb)
 
 ### Helpful Resources
  - [MovieLens Dataset](https://grouplens.org/datasets/movielens/latest/)
