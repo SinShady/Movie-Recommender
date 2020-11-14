@@ -54,7 +54,7 @@ We ordered the movies from most rated to least rated and plotted it to find we h
 ![Long Tail](/reports/figures/ratings_count_distribution.png)
 
 Below is a word cloud of the genres and user-defined tags in our dataset, each word scaled according to their frequency. We can see that our dataset contains a lot of Drama and Comedy movies.
-## <center>Genres and User-Defined Tags</center>
+### <center>Genres and User-Defined Tags</center>
 
 ![Genres and Tags](/reports/figures/word_cloud_2.png)
 
