@@ -43,13 +43,13 @@ We then use feature engineering to create new features, for example, creating a 
 
 We can see from this distribution bar chart that the ratings are distrubted normally with a left skew. The most common rating is 4 stars
 
-## <center>Distribution of Ratings</center>
+### <center>Distribution of Ratings</center>
 
 ![Ratings Distribution](/reports/figures/ratings_dist.png)
 
 We ordered the movies from most rated to least rated and plotted it to find we had a "long tail" issue. We have strongly skewed ratings with less than 5% of the movies making up most of our rating data. This means that our recommender engine may recommend the most popular movies more, which is not a bad thing as those are the movies people tend to like.
 
-## <center>Amount of Ratings Across all Movies</center>
+### <center>Amount of Ratings Across all Movies</center>
 
 ![Long Tail](/reports/figures/ratings_count_distribution.png)
 
