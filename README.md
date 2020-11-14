@@ -5,7 +5,7 @@
 
 ### Reports
 - [Presentation Notebook](https://github.com/SinShady/Movie-Recommender/blob/main/notebooks/final/report.ipynb)
-- [Presentation PowerPoint](https://github.com/SinShady/Movie-Recommender/blob/main/reports/Project-4-Presentation.pdf)
+- [Presentation PowerPoint](https://github.com/SinShady/Movie-Recommender/blob/main/reports/Project 4 Presentation.pdf)
 
 ### Exploratory Notebooks
 - [Sindhu's EDA](https://github.com/SinShady/Movie-Recommender/tree/main/notebooks/exploratory/Sindhu-eda.ipynb)
@@ -43,25 +43,25 @@ We then use feature engineering to create new features, for example, creating a 
 
 We can see from this distribution bar chart that the ratings are distrubted normally with a left skew. The most common rating is 4 stars
 
-### <center>Distribution of Ratings</center>
+## <center>Distribution of Ratings</center>
 
 ![Ratings Distribution](/reports/figures/ratings_dist.png)
 
-We ordered the movies from most rated to least rated and plotted the rating count per movie to find we had a "long tail" issue. We have strongly skewed ratings with less than 5% of the movies making up most of our rating data. This means that our recommender engine may recommend the most popular movies more, which is not a bad thing as those are the movies people tend to like.
+We ordered the movies from most rated to least rated and plotted it to find we had a "long tail" issue. We have strongly skewed ratings with less than 5% of the movies making up most of our rating data. This means that our recommender engine may recommend the most popular movies more, which is not a bad thing as those are the movies people tend to like.
 
-### <center>Amount of Ratings Across all Movies</center>
+## <center>Amount of Ratings Across all Movies</center>
 
 ![Long Tail](/reports/figures/ratings_count_distribution.png)
 
 Below is a word cloud of the genres and user-defined tags in our dataset, each word scaled according to their frequency. We can see that our dataset contains a lot of Drama and Comedy movies.
-### <center>Genres and User-Defined Tags</center>
+## <center>Genres and User-Defined Tags</center>
 
 ![Genres and Tags](/reports/figures/word_cloud_2.png)
 
 # Recommendation Engines
 
 ## Collaborative-Based Filtering
-The primary predictive model used in this project is Apache Spark ML Alternating Least Squares (ALS) for collaborative filtering. ALS recommender is a matrix factorization algorithm that uses Alternating Least Squares with Weighted-Lamda-Regularization (ALS-WR). It uses matrix multiplication with user ratings. As there are a lot of blank ratings (not every user has rated every movie), it predicts ratings for those blanks and recommneds movies based on those predictions. Our ALS model predicts top 5 rated movies for each user.  We conduct a train-test split separating data into training and testing sets for model training and evaluation on an 80/20 split respectively. After building our first simple model, and adjusting parameters, we run a param grid to identify the best performing model. We also build custom content based filtering predictive engines using Python. 
+The primary predictive model used in this project is Apache Spark ML Alternating Least Squares (ALS) for collaborative filtering. ALS recommender is a matrix factorization algorithm that uses Alternating Least Squares with Weighted-Lamda-Regularization (ALS-WR). It uses matrix multiplication with user ratings. As there are a lot of blank ratings (not every user has rated every movie), it predicts ratings for those blanks and recommneds movies based on those predictions. Our ALS model predicts top 5 rated movies for each user.  We conduct a train-test split separating data into training and testing sets for model training and evaluation on an 80/20 split respectively. After building our first simple model, and adjusting parameters, we run a param grid to identify the best performing model.
 
 ### Model Evaluation
 Our ALS model is evaluated using the RMSE (Root Mean Squared Error) metric. RMSE or Root Mean Squared Error is used as a measure of prediction accuracy. I.e. Given a set of items (movies) how well can the system predict my ratings for these items, or how well it can predict that i will watch these items. RMSE is typically used to evaluate regression problems where the output (a predicted scalar value) is compared with the true scalar value output for a given data point, making it a good fit for our five star ratings evaluation. 
@@ -76,7 +76,7 @@ Our model’s RMSE score is 0.86 which is consistent with other published ALS re
 ## Cold Start Problem
 What if the service aquires a new user? Our collaboration-based engine is based off a current user that has a history of ratings within the site. A user has to have a history in order for our model to return recommendations. To combat this new user issue, known more formally as the Cold Start Problem, we develop two seperate engines that we can incorporate.
 
-## Recommendation Engine #2
+## Content Based Recommendatons
 We created a second recommendation engine which gives the user the ability to input a movie that they subjectively enjoyed in the past. It takes a movie title and spits out similar movies based on genres and user defined tags in our dataset. Here is an example of the engine at work after inputting <i>Eternal Sunshine of the Spotless Mind (2004), 28 Days Later (2002), Kung Fu Panda: Secrets of the Masters (2011), and 10 Things I Hate About You (1999)</i>
 ![Engine #2](/reports/figures/movie_recs.png)
 We can see that our recommendation engine is doing quite well!
