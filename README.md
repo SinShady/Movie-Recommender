@@ -4,11 +4,11 @@
 # Table of Contents
 
 ### Reports
-- [Presentation Notebook](https://github.com/SinShady/Movie-Recommender/tree/main/notebooks/final/report.ipynb)
-- [Presentation PowerPoint](https://github.com/SinShady/Movie-Recommender/tree/main/)
+- [Presentation Notebook](https://github.com/SinShady/Movie-Recommender/blob/main/notebooks/final/report.ipynb)
+- [Presentation PowerPoint](https://github.com/SinShady/Movie-Recommender/blob/main/reports/Project 4 Presentation.pdf)
 
 ### Exploratory Notebooks
-- [Sindhu's EDA](https://github.com/SinShady/Movie-Recommender/blob/main/notebooks/exploratory/Sindhu-eda.ipynb)
+- [Sindhu's EDA](https://github.com/SinShady/Movie-Recommender/tree/main/notebooks/exploratory/Sindhu-eda.ipynb)
 - [Jeff's EDA](https://github.com/SinShady/Movie-Recommender/blob/main/notebooks/exploratory/Jeff_EDA_small.ipynb)
 - [Will's EDA](https://github.com/SinShady/Movie-Recommender/blob/main/notebooks/exploratory/)
 
