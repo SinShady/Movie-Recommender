@@ -19,7 +19,7 @@
 # Business Understanding
 In this project, we address the needs of a hypothetical movie streaming business looking to increase revenue. The business is new to online streaming and wants to compete with larger well known online streaming businesses.  Using the <a href="https://grouplens.org/datasets/movielens/latest/">MovieLens dataset</a> and well established data science techniques, we build movie recommendation engines using both collaborative and content based filtering. 
 
-By accurately predicting sound movie recommendations to subscribers, subscribers will stay engaged on streaming platform and remain customers longer. It can also present an opportunity for ad based revenue targeting customers on the platform. Furthermore, satisfied customers are more likely to recommend the streaming service to family and friends. 
+By accurately predicting sound movie recommendations to subscribers, subscribers will stay engaged on the streaming platform and remain customers longer. It can also present an opportunity for ad based revenue targeting customers on the platform. Furthermore, satisfied customers are more likely to recommend the streaming service to family and friends. 
 
 # The Data
 The data set used for this project is the <a href="https://grouplens.org/datasets/movielens/latest/">MovieLens dataset</a> from the GroupLens research lab at the University of Minnesota. It contains 100,835 unique viewer ratings, 610 individual viewers, and 9,724 movies.
@@ -47,13 +47,13 @@ We can see from this distribution bar chart that the ratings are distrubted norm
 
 ![Ratings Distribution](/reports/figures/ratings_dist.png)
 
-We ordered the movies from most rated to least rated and plotted it to find we had a "long tail" issue. We have strongly skewed ratings with less than 5% of the movies making up most of our rating data. This means that our recommender engine may recommend the most popular movies more, which is not a bad thing as those are the movies people tend to like.
+We ordered the movies from most rated to least rated and plotted the amount of ratings for each movie to find we had a "long tail" issue. We have strongly skewed ratings with less than 5% of the movies making up most of our rating data. This means that our recommender engine may recommend the most popular movies more, which is not a bad thing as those are the movies people tend to like.
 
 ### <center>Amount of Ratings Across all Movies</center>
 
 ![Long Tail](/reports/figures/ratings_count_distribution.png)
 
-Below is a word cloud of the genres and user-defined tags in our dataset, each word scaled according to their frequency. We can see that our dataset contains a lot of Drama and Comedy movies.
+Below is a word cloud of the genres and user-defined tags in our dataset, each word scaled according to their frequency of appearing in all the movies. We can see that our dataset contains a lot of Drama and Comedy movies.
 ### <center>Genres and User-Defined Tags</center>
 
 ![Genres and Tags](/reports/figures/word_cloud_2.png)
@@ -61,7 +61,7 @@ Below is a word cloud of the genres and user-defined tags in our dataset, each w
 # Recommendation Engines
 
 ## Collaborative-Based Filtering
-The primary predictive model used in this project is Apache Spark ML Alternating Least Squares (ALS) for collaborative filtering. ALS recommender is a matrix factorization algorithm that uses Alternating Least Squares with Weighted-Lamda-Regularization (ALS-WR). It uses matrix multiplication with user ratings. As there are a lot of blank ratings (not every user has rated every movie), it predicts ratings for those blanks and recommneds movies based on those predictions. Our ALS model predicts top 5 rated movies for each user.  We conduct a train-test split separating data into training and testing sets for model training and evaluation on an 80/20 split respectively. After building our first simple model, and adjusting parameters, we run a param grid to identify the best performing model.
+The primary predictive model used in this project is Apache Spark ML Alternating Least Squares (ALS) for collaborative filtering. ALS recommender is a matrix factorization algorithm that uses Alternating Least Squares with Weighted-Lamda-Regularization (ALS-WR). It uses matrix multiplication with user ratings. As there are a lot of blank ratings (not every user has rated every movie and our matrix is only 98.2% populated), it predicts ratings for those blanks and recommneds movies based on those predictions. Our ALS model predicts top 5 rated movies for each user.  We conduct a train-test split separating data into training and testing sets for model training and evaluation on an 80/20 split respectively. After building our first simple model, and adjusting parameters, we run a param grid to identify the best performing model.
 
 ### Model Evaluation
 Our ALS model is evaluated using the RMSE (Root Mean Squared Error) metric. RMSE or Root Mean Squared Error is used as a measure of prediction accuracy. I.e. Given a set of items (movies) how well can the system predict my ratings for these items, or how well it can predict that i will watch these items. RMSE is typically used to evaluate regression problems where the output (a predicted scalar value) is compared with the true scalar value output for a given data point, making it a good fit for our five star ratings evaluation. 
@@ -74,10 +74,10 @@ Our model’s RMSE score is 0.86 which is consistent with other published ALS re
 ![Collab Model Example](/reports/figures/collab_rec_ex.jpg)
 
 ## Cold Start Problem
-What if the service aquires a new user? Our collaboration-based engine is based off a current user that has a history of ratings within the site. A user has to have a history in order for our model to return recommendations. To combat this new user issue, known more formally as the Cold Start Problem, we develop two seperate engines that we can incorporate.
+What if the service acquires a new user? Our collaboration-based engine is based off a current user that has a history of ratings within the site. A user has to have a history in order for our model to return recommendations. To combat this new user issue, known more formally as the Cold Start Problem, we develop two seperate engines that we can incorporate.
 
 ## Content Based Recommendatons
-We created a second recommendation engine which gives the user the ability to input a movie that they subjectively enjoyed in the past. It takes a movie title and spits out similar movies based on genres and user defined tags in our dataset. Here is an example of the engine at work after inputting <i>Eternal Sunshine of the Spotless Mind (2004), 28 Days Later (2002), Kung Fu Panda: Secrets of the Masters (2011), and 10 Things I Hate About You (1999)</i>
+We created a second recommendation engine which gives the user the ability to input a movie that they subjectively enjoyed in the past. The engine takes a movie title and spits out 5 similar movies based on genres and user defined tags in our dataset. Here is an example of the engine at work after inputting <i>Eternal Sunshine of the Spotless Mind (2004), 28 Days Later (2002), Kung Fu Panda: Secrets of the Masters (2011), and 10 Things I Hate About You (1999)</i>
 ![Engine #2](/reports/figures/movie_recs.png)
 We can see that our recommendation engine is doing quite well!
 
@@ -85,6 +85,6 @@ We can see that our recommendation engine is doing quite well!
 ## Recommendation Engine #3
 What if the user didn't specify any movies they liked? To adress this issue, we created a third recommendation engine which uses Bayesian Upper Confidence Bound Algorithm to determine which movies are the most favourable to recommend to a user without the user having ever seen a movie in their history. This list will self adjust as more movies and ratings get added to the data. The movies recommended using this engine were <i>Mission: Impossible - Fallout (2018), Metal: A Headbanger's Journey (2005), The Deep End of the Ocean (1999), The Program (1993), Take the Lead (2006), Down in the Valley (2005)</i>
 
-## Summary
+# Summary
 In summary, our team has developed 3 recommendation engines which can be used for a movie streaming service. We started by creating an ALS movie recommender model using collaborative filtering that will predict the top five movies for a user to view based on ratings by users similar to them. If a user is new to the service, we have presented two options. The first option is to use a content based filtering engine that outputs five movies per title based on a users liked titles while they are signing up for the movie service. The second option provides a list of five movies from the databse which our engine predicts are the most appealing without the user having to input any history. Using all three recommendation engines together, we present multiple options for your recommendation needs. As more movies, users, and ratings get added to the database, the recommendations will only get better.
 
