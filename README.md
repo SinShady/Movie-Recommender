@@ -39,7 +39,7 @@ CSV files are imported and converted to both Pandas and Spark data frames, which
 
 We then use feature engineering to create new features, for example, creating a new column named `liked`. This then re-casts our scores from a 0-5 star rating problem to a binary like/no-like problem, with 4.0 stars and above representing a “liked” movie. Additionally, we have engineered a `genres and tags` column which combines all the genres and user-defined tags per movie.
 
-## Visualization the Data
+## Visualizating the Data
 
 We can see from this distribution bar chart that the ratings are distrubted normally with a left skew. The most common rating is 4 stars
 
@@ -61,7 +61,7 @@ Below is a word cloud of the genres and user-defined tags in our dataset, each w
 # Recommendation Engines
 
 ## Collaborative-Based Filtering
-The primary predictive model used in this project is Apache Spark ML Alternating Least Squares (ALS) for collaborative filtering. ALS recommender is a matrix factorization algorithm that uses Alternating Least Squares with Weighted-Lamda-Regularization (ALS-WR). It uses matrix multiplication with user ratings. As there are a lot of blank ratings (not every user has rated every movie and our matrix is only 1.8% populated), it predicts ratings for those blanks and recommneds movies based on those predictions. Our ALS model predicts top 5 rated movies for each user.  We conduct a train-test split separating data into training and testing sets for model training and evaluation on an 80/20 split respectively. After building our first simple model, and adjusting parameters, we run a param grid to identify the best performing model.
+The primary predictive model used in this project is Apache Spark ML Alternating Least Squares (ALS) for collaborative filtering. ALS recommender is a matrix factorization algorithm that uses Alternating Least Squares with Weighted-Lamda-Regularization (ALS-WR). It uses matrix multiplication with user ratings. As there are a lot of blank ratings (not every user has rated every movie and our matrix is only 1.8% populated), it predicts ratings for those blanks and recommends movies based on those predictions. Our ALS model predicts top 5 rated movies for each user.  We conduct a train-test split separating data into training and testing sets for model training and evaluation on an 80/20 split respectively. After building our first simple model, and adjusting parameters, we run a param grid to identify the best performing model.
 
 ### Model Evaluation
 Our ALS model is evaluated using the RMSE (Root Mean Squared Error) metric. RMSE or Root Mean Squared Error is used as a measure of prediction accuracy. I.e. Given a set of items (movies) how well can the system predict my ratings for these items, or how well it can predict that i will watch these items. RMSE is typically used to evaluate regression problems where the output (a predicted scalar value) is compared with the true scalar value output for a given data point, making it a good fit for our five star ratings evaluation. 
