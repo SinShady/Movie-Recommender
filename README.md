@@ -39,7 +39,7 @@ CSV files are imported and converted to both Pandas and Spark data frames, which
 
 We then use feature engineering to create new features, for example, creating a new column named `liked`. This then re-casts our scores from a 0-5 star rating problem to a binary like/no-like problem, with 4.0 stars and above representing a “liked” movie. Additionally, we have engineered a `genres and tags` column which combines all the genres and user-defined tags per movie.
 
-## Visualizating the Data
+## Visualizing the Data
 
 We can see from this distribution bar chart that the ratings are distrubted normally with a left skew. The most common rating is 4 stars
 
